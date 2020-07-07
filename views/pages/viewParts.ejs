@@ -1,0 +1,42 @@
+<style>
+    table, th, td{
+        padding: 10px;
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+</style>
+<body>
+    <div class="container">
+        <h3>View all the records</h3>
+        <br>
+        <form action="/">
+            <button type= "submit" class="btn btn-secondary"> Home</button>
+        </form>
+    <br>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>JobId</th>
+                <th>PartId</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% jobs.forEach(function(job){ %>
+                <tr>
+                    <td> <%= job.id %> </td>
+                    <td> <%= job.partId %> </td>
+                    <td> <%= job.qty %> </td>
+                    <td> 
+                        <a href="/editData/<%= job.id %>" class="btn btn-primary">Edit</a>
+                        <form class="d-inline" action="/viewData/<%= job.id %>" method="POST">
+                            <input type="submit" value="Delete" class="btn btn-primary">
+                        </form>
+                    </td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</body>
+</div>
+    

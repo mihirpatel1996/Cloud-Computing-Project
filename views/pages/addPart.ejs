@@ -1,0 +1,30 @@
+<body>
+    <div class="container">
+        <h3>Welcome to company Y</h3>
+        <h4>Please fill part details to add part into the system</h4>
+        <br>
+    <form action="/">
+        <button class="btn btn-secondary">Go to main page</button>
+    </form>
+    <br>
+    <row>
+        <col md="4">
+        <form action="/add_part" method="POST">
+            <div class="form-group">
+            <label for="partId">PartId</label>
+            <input type="number" required class="form-control" id="partId" placeholder="Please enter unique part Id.">
+            </div>
+            <div class="form-group">
+                <label for="partName">Part Name</label>
+                <input type="text" required class="form-control" id="partName" placeholder="Please enter Name of the part.">
+            </div>
+            <div class="form-group">
+                <label for="qoh">Quantity on hand (Available quantity) </label>
+                <input type="text" class="form-control" id="qoh" placeholder="Please enter Quantity on Hand value.">
+            </div>
+            <button type="submit" class="btn btn-primary">Add</button>
+        </form>
+        </col>
+    </row>
+    </div>
+</body>
