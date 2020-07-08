@@ -29,8 +29,8 @@ module.exports.http = {
     *                                                                          *
     ***************************************************************************/
 
-    order: [
-      'bodyParser',
+    // order: [
+      // 'bodyParser',
       // 'cookieParser',
       // 'session',
       // 'compress',
@@ -38,7 +38,7 @@ module.exports.http = {
       // 'router',
       // 'www',
       // 'favicon',
-    ],
+    // ],
 
 
     /***************************************************************************
@@ -49,11 +49,11 @@ module.exports.http = {
     *                                                                          *
     ***************************************************************************/
 
-    bodyParser: (function _configureBodyParser(){
-      var skipper = require('skipper');
-      var middlewareFn = skipper({ strict: true });
-      return middlewareFn;
-    })(),
+    // bodyParser: (function _configureBodyParser(){
+    //   var skipper = require('skipper');
+    //   var middlewareFn = skipper({ strict: true });
+    //   return middlewareFn;
+    // })(),
 
   },
 

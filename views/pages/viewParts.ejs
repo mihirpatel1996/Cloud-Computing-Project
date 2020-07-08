@@ -7,36 +7,63 @@
 </style>
 <body>
     <div class="container">
-        <h3>View all the records</h3>
-        <br>
         <form action="/">
-            <button type= "submit" class="btn btn-secondary"> Home</button>
+            <button type= "submit" class="btn btn-info">Go to main page</button>
         </form>
+        <br>
+        <h3>List of parts stored in system:</h3>
     <br>
-    <table class="table table-hover">
-        <thead>
-            <tr>
-                <th>JobId</th>
-                <th>PartId</th>
-                <th>Quantity</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% jobs.forEach(function(job){ %>
-                <tr>
-                    <td> <%= job.id %> </td>
-                    <td> <%= job.partId %> </td>
-                    <td> <%= job.qty %> </td>
-                    <td> 
-                        <a href="/editData/<%= job.id %>" class="btn btn-primary">Edit</a>
-                        <form class="d-inline" action="/viewData/<%= job.id %>" method="POST">
-                            <input type="submit" value="Delete" class="btn btn-primary">
-                        </form>
-                    </td>
-                </tr>
-            <% }) %>
-        </tbody>
-    </table>
+    <% if(typeof message != 'undefined'){ %>
+        <div class="alert alert-warning" role="alert">
+            <%= message %>
+        </div>
+    <% } %>
+    <% if(typeof parts != 'undefined'){ %>
+        <row>
+            <col>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>PartId</th>
+                            <th>PartName</th>
+                            <th>Quantity on Hand</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% parts.forEach(function(part){ %>
+                            <tr>
+                                <td> <%= part.id %> </td>
+                                <td> <%= part.partName %> </td>
+                                <td> <%= part.qoh %> </td>
+                                <td> 
+                                    <form class="d-inline" action="/editPartDetail" method="POST">
+                                        <input name="partId" value="<%= part.id %>" hidden/>
+                                        <input name="partName" value="<%= part.partName %>" hidden/>
+                                        <input name="qoh" value="<%= part.qoh %>" hidden/>
+                                        <button type="submit" class="btn btn-primary">Edit</button>
+                                    </form>
+                                    <form class="d-inline" action="/deletePart/<%= part.id %>" method="POST">
+                                        <input type="submit" value="Delete" class="btn btn-danger">
+                                    </form>
+                                </td>
+                            </tr>
+                        <% }) %>
+                    </tbody>
+                </table>
+            </col>
+        </row>
+    <% } %>
+    <div class="row">
+        <div class="col-md-3 offset-md-5">
+            <form action="/addPart">
+                <button type= "submit" class="btn btn-success">
+                Add Part
+                </button>
+            </form>
+        </div>
+    </div>
+    
 </body>
 </div>
     

@@ -1,17 +1,29 @@
 <div class="container">
-  <h3>Welcome to company Y</h3>
-<h5> Actions </h5>
-
-<br>
-<form action="/view_parts">
-    <button type= "submit" class="btn btn-secondary">
-      List Parts
-    </button>
-</form>
-<br>
-<form action="/add_part">
-  <button type= "submit" class="btn btn-secondary">
-    Add Part
-  </button>
-</form>
+  <h2 style="color: blue;">Welcome to company Y!! we keep parts related information</h2>
+  <br><br>
+  <row>
+    <col md="3">
+      <h3 style="color: red;"> Actions: </h3>
+    </col>
+  </row>
+  <row>
+    <br>
+    <col md="3">
+      <h5>List All the parts stored in the Company Y</h5>
+      <form action="/getParts">
+          <button type= "submit" class="btn btn-success">
+            List All Parts
+          </button>
+      </form>
+    </col>
+    <br><br>
+    <col md="3">
+      <h5>Add part to the Company Y data</h5>
+      <form action="/addPart">
+        <button type= "submit" class="btn btn-success">
+          Add Part
+        </button>
+      </form>
+    </col>
+  </row>
 </div>

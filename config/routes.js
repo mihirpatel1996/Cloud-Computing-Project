@@ -1,6 +1,9 @@
 module.exports.routes = {
   '/': { view: 'pages/homepage' },
-  'GET /view_parts' : 'PartsController.getParts',
-  'GET /add_part' : {view: 'pages/addPart'},
-  'POST /add_part' : 'PartsController.addPart',
+  'GET /getParts' : 'PartsController.getParts',
+  'GET /addPart' : {view: 'pages/addPart'},
+  'POST /addPart' : 'PartsController.addPart',
+  'POST /editPartDetail' : 'PartsController.editPartDetail',
+  'POST /editPart/:partId' : 'PartsController.editPart',
+  'POST /deletePart/:partId' : 'PartsController.deletePart'
 };
