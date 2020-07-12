@@ -110,6 +110,7 @@ module.exports = {
         }
       });
 }*/
+
 /* updatePartQnt: function (req, res) {
 
     const order = {
