@@ -1,13 +1,13 @@
 module.exports.models = {
-  migrate: 'alter',
+  migrate: "safe",
 
   attributes: {
-    id: { type: 'number', autoIncrement: true, },
+    id: { type: "number", autoIncrement: true },
   },
 
   dataEncryptionKeys: {
-    default: 'TD592CSGn+pBm53oGjJ9GpiGTXZI2bdUyg5AeUYz5Ao='
+    default: "TD592CSGn+pBm53oGjJ9GpiGTXZI2bdUyg5AeUYz5Ao=",
   },
 
-  cascadeOnDestroy: true
+  cascadeOnDestroy: true,
 };

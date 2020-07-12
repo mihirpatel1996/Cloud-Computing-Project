@@ -1,19 +1,23 @@
 module.exports.routes = {
-
   // These APIs are made for internal use of company Y
-  '/': { view: 'pages/homepage' },
-  'GET /getParts' : 'PartsController.getParts',
-  'GET /addPart' : {view: 'pages/addPart'},
-  'POST /addPart' : 'PartsController.addPart',
-  'POST /editPartDetail' : 'PartsController.editPartDetail',
-  'POST /editPart/:partId' : 'PartsController.editPart',
-  'POST /deletePart/:partId' : 'PartsController.deletePart',
+  "/": { view: "pages/homepage" },
+  "GET /getParts": "PartsController.getParts",
+  "GET /addPart": { view: "pages/addPart" },
+  "POST /addPart": "PartsController.addPart",
+  "POST /editPartDetail": "PartsController.editPartDetail",
+  "POST /editPart/:partId": "PartsController.editPart",
+  "POST /deletePart/:partId": "PartsController.deletePart",
 
   // These are the APIs are made when to be called externally by others. (eg. Company Z)
-  'GET /parts' : 'PartsExternalController.getParts',
-  'GET /parts/:partId' : 'PartsExternalController.getParts',
-  'POST /isPartExist': 'PartsExternalController.isPartExist',
-  'POST /add_part' : 'PartsExternalController.addPart',
-  'PUT /update_part/:partId' : 'PartsExternalController.updatePart',
-  'DELETE /delete_part/:partId' : 'PartsExternalController.deletePart',
+  "GET /parts": "PartsExternalController.getParts",
+  "GET /parts/:partId": "PartsExternalController.getParts",
+  "POST /isPartExist": "PartsExternalController.isPartExist",
+  "POST /add_part": "PartsExternalController.addPart",
+  "PUT /update_part/:partId": "PartsExternalController.updatePart",
+  "DELETE /delete_part/:partId": "PartsExternalController.deletePart",
+
+  // These are APIs for creating orders when comapny Z makes order
+  //"GET /getOrders": "PartOrdersController.getOrders",
+  "POST /addOrder": "PartOrdersController.addOrder",
+  //"POST /updatepartqnt": "PartOrdersController.updatePartQnt",
 };
