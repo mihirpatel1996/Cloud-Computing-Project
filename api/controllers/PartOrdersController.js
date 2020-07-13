@@ -22,6 +22,14 @@ module.exports = {
           reeor: err,
         });
       } else {
+      /* if (order.length !== 0) {
+        res.send({
+          success: false,
+          error: false,
+          message:
+            "record you are trying to add already exists. Please add unique partid, jobname and user id",
+        });
+      }*/
         /*res.send({
           success: true,
           isError: false,

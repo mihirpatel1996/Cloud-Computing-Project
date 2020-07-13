@@ -5,7 +5,7 @@
  * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
  */
 module.exports = {
-  tablename: "part_orders",
+  tablename: "partorders",
   attributes: {
     id: {
       type: "number",
