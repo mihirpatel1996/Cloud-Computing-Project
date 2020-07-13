@@ -13,100 +13,77 @@ module.exports = {
       userId: req.body.userId,
       qnt: req.body.qnt,
     };
-    //checking for user id
-    sails.models.partorders
-      .find({
-        userId: order.userId,
-      })
-      .exec((err, orderfound) => {
-        if (err) {
-          res.send({
-            success: false,
-            isError: true,
-            message: "Error in finding order with  user id",
-            error: err,
-          });
-        }
-        if (orderfound.length !== 0) {
-          res.send({
-            success: false,
-            isError: false,
-            message: "Order already exist with given user id",
-          });
-        } else {
-          console.log("user id not found and should be added to table");
-          //res.send({message: "user id not found and should be added to table"});
-          sails.models.partorders.create(order).exec((err) => {
+    //console.log("user id not found and should be added to table");
+    //res.send({message: "user id not found and should be added to table"});
+    sails.models.partorders.create(order).exec((err) => {
+      if (err) {
+        res.send({
+          success: false,
+          isError: true,
+          message: "error in adding order",
+          reeor: err,
+        });
+      } else {
+        //find qnt
+        var qnt = 0;
+
+        sails.models.parts
+          .findOne({
+            id: req.body.partId,
+          })
+          .exec((err, part) => {
             if (err) {
               res.send({
                 success: false,
                 isError: true,
-                message: "error in adding order",
-                reeor: err,
+                message: "Error in finding part with given Id",
+                error: err,
+              });
+            }
+            if (part.length == 0) {
+              res.send({
+                success: false,
+                isError: false,
+                message: "Part with given part Id does not exist",
               });
             } else {
-              //find qnt
-              var qnt = 0;
+              //res.send({ part });
+              qnt = part.qoh;
+              console.log("Found part and qnt is " + qnt);
+              console.log("found qnt:" + qnt);
+              console.log("order qnt:" + order.qnt);
+              var updatedqnt = qnt - order.qnt;
+              console.log("updated qnt:" + updatedqnt);
 
+              //updation part
+
+              const updatepart = {
+                //partName: req.body.partName,
+                qoh: updatedqnt,
+              };
               sails.models.parts
-                .findOne({
-                  id: req.body.partId,
-                })
-                .exec((err, part) => {
+                .update({ id: req.body.partId }, updatepart)
+                .exec((err) => {
                   if (err) {
                     res.send({
                       success: false,
                       isError: true,
-                      message: "Error in finding part with given Id",
+                      message: "Error in updating part details.",
                       error: err,
                     });
-                  }
-                  if (part.length == 0) {
-                    res.send({
-                      success: false,
-                      isError: false,
-                      message: "Part with given part Id does not exist",
-                    });
                   } else {
-                    //res.send({ part });
-                    qnt = part.qoh;
-                    console.log("Found part and qnt is " + qnt);
-                    console.log("found qnt:" + qnt);
-                    console.log("order qnt:" + order.qnt);
-                    var updatedqnt = qnt - order.qnt;
-                    console.log("updated qnt:" + updatedqnt);
-
-                    //updation part
-
-                    const updatepart = {
-                      //partName: req.body.partName,
-                      qoh: updatedqnt,
-                    };
-                    sails.models.parts
-                      .update({ id: req.body.partId }, updatepart)
-                      .exec((err) => {
-                        if (err) {
-                          res.send({
-                            success: false,
-                            isError: true,
-                            message: "Error in updating part details.",
-                            error: err,
-                          });
-                        } else {
-                          res.send({
-                            success: true,
-                            isError: false,
-                            message: "Successfully updated part details.",
-                          });
-                        }
-                      });
+                    res.send({
+                      success: true,
+                      isError: false,
+                      message: "Successfully updated part details.",
+                    });
                   }
                 });
             }
           });
-        }
-      });
-  },
+      }
+    });
+  }, //add part
 };
 //update part api
 /*editPart: function(req, res) {
@@ -227,3 +204,39 @@ module.exports = {
         }
       });
   },*/
+/*---------------------------duplication of user id------------*/
+/*   const order = {
+      id: req.body.partId,
+      jobName: req.body.jobName,
+      userId: req.body.userId,
+      qnt: req.body.qnt,
+    };
+    //checking for user id
+    sails.models.partorders
+      .find({
+        userId: order.userId,
+      })
+      .exec((err, orderfound) => {
+        if (err) {
+          res.send({
+            success: false,
+            isError: true,
+            message: "Error in finding order with  user id",
+            error: err,
+          });
+        }
+        if (orderfound.length !== 0) {
+          res.send({
+            success: false,
+            isError: false,
+            message: "Order already exist with given user id",
+          });
+        } else {
+          const order = {
+            id: req.body.partId,
+            jobName: req.body.jobName,
+            userId: req.body.userId,
+            qnt: req.body.qnt,
+          };
+                  }
+      });*/

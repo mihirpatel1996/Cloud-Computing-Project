@@ -16,9 +16,11 @@ module.exports.routes = {
   "PUT /update_part/:partId": "PartsExternalController.updatePart",
   "DELETE /delete_part/:partId": "PartsExternalController.deletePart",
 
-  // These are APIs for creating orders when comapny Z makes order
-  //"GET /getOrders": "PartOrdersController.getOrders",
+  // API for creating orders when comapny Z makes order
+
   "POST /addOrder": "PartOrdersController.addOrder",
-  //"POST /finduserid": "PartOrdersController.findUserId",
-  //"POST /updatepartqnt": "PartOrdersController.updatePartQnt",
 };
+
+//"GET /getOrders": "PartOrdersController.getOrders",
+//"POST /finduserid": "PartOrdersController.findUserId",
+//"POST /updatepartqnt": "PartOrdersController.updatePartQnt",
