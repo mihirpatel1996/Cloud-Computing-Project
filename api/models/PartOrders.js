@@ -9,7 +9,7 @@ module.exports = {
   attributes: {
     id: {
       type: "number",
-      columnName: "partId",
+      columnName: 'partId',
       required: true,
     },
     jobName: {
@@ -25,6 +25,6 @@ module.exports = {
     qnt: {
       type: "number",
       defaultsTo: 0,
-    },
-  },
+    }
+  }
 };
