@@ -22,3 +22,7 @@ module.exports.routes = {
   "POST /addOrder": "PartOrdersController.addOrder",
   "POST /makeOrder": "PartOrdersController.makeOrder"
 };
+
+//"GET /getOrders": "PartOrdersController.getOrders",
+//"POST /finduserid": "PartOrdersController.findUserId",
+//"POST /updatepartqnt": "PartOrdersController.updatePartQnt",
