@@ -1,2 +1,5 @@
 # Cloud Computing Project
-This repository contains code for company Y, as a part of three interdependent companies. It also includes docker integration hosted on cloud platform. 
+* The project contains three interdependent companies X, Y and Z.
+* This repository contains code for company Y.
+* It allows transactions if they meet the criteria or it terminates transaction.
+* It also includes docker integration hosted on a cloud platform. 
